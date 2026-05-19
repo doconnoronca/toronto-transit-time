@@ -60,7 +60,7 @@ void splash_layer_inbox_received(DictionaryIterator *iterator, void *context) {
       splash_show("CAN'T DOWNLOAD STOPS \U0001F614");
       break;
     case SPLASH_TEXT_ERROR_PREDICTIONS:
-      splash_show("CAN'T DOWNLOAD TTC PREDICTIONS \U0001F614");
+      splash_show("CAN'T DOWNLOAD PREDICTIONS \U0001F614");
       break;
   }
 }

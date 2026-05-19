@@ -1,7 +1,7 @@
 var MAX_TIMES_FOR_DIRECTION = 3;
-var ABOUT_SECTION_TITLE = 'Toronto Transit Time';
-var ABOUT_ITEM_TITLE = 'by @chesterbr';
-var ABOUT_ITEM_SUBTITLE = 'http://chester.me';
+var ABOUT_SECTION_TITLE = 'TransSee Transit Time';
+var ABOUT_ITEM_TITLE = 'by @chesterbr and TransSee';
+var ABOUT_ITEM_SUBTITLE = 'https://www.transsee.ca/';
 
 var stopsAndRoutes;
 var routeSelectedCallback;
@@ -101,11 +101,11 @@ function buildPredictionMessages() {
 
   appendToMessage('prediction_stop_address', predictions.stopTitle);
   if (directions.length == 0) {
-    appendToMessage('prediction_route_text', predictions.dirTitleBecauseNoPredictions);
+    appendToMessage('prediction_route_text', predictions.routeTitle+'\n'+predictions.dirTitleBecauseNoPredictions);
     enqueueMessage();
   } else {
     directions.forEach(function(direction) {
-      appendToMessage('prediction_route_text', direction.title);
+      appendToMessage('prediction_route_text', predictions.routeTitle+'\n'+direction.title);
       var times = values(direction, 'prediction');
       times.slice(0, MAX_TIMES_FOR_DIRECTION).forEach(function(time) {
         appendToMessage('prediction_seconds', parseInt(time.seconds));
