@@ -1,5 +1,5 @@
 function getRoutes(lat, lon, callback, errorCallback) {
-  var url = 'http://totransit.chester.me/menu' +
+  var url = 'http://www.transsee.ca:8080/menu' +
               '?lat=' + lat +
               '&lon=' + lon;
   xhrRequest(url, 'GET', function(json_routes) {
