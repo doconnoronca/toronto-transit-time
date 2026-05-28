@@ -41,7 +41,7 @@ void predictions_layer_init(Window *window) {
   );
   s_main_text_layer = text_layer_create(main_text_bounds);
   text_layer_set_text_alignment(s_main_text_layer, GTextAlignmentCenter);
-  text_layer_set_font(s_main_text_layer, fonts_get_system_font(FONT_KEY_GOTHIC_18_BOLD));
+  text_layer_set_font(s_main_text_layer, fonts_get_system_font(s_bounds.size.h>=200?FONT_KEY_GOTHIC_24_BOLD:FONT_KEY_GOTHIC_18_BOLD));
 
   GRect secondary_text_bounds = GRect(
     s_bounds.origin.x, s_bounds.size.h * 0.60,
@@ -49,7 +49,7 @@ void predictions_layer_init(Window *window) {
   );
   s_secondary_text_layer = text_layer_create(secondary_text_bounds);
   text_layer_set_text_alignment(s_secondary_text_layer, GTextAlignmentCenter);
-  text_layer_set_font(s_secondary_text_layer, fonts_get_system_font(FONT_KEY_GOTHIC_14_BOLD));
+  text_layer_set_font(s_secondary_text_layer, fonts_get_system_font(s_bounds.size.h>=200?FONT_KEY_GOTHIC_18_BOLD:FONT_KEY_GOTHIC_14_BOLD));
 
   s_first_prediction_text_bounds = GRect(
     s_bounds.origin.x + PREDICTION_BOX_MARGIN / 2, s_bounds.size.h * 0.40,
@@ -57,7 +57,7 @@ void predictions_layer_init(Window *window) {
   );
   s_first_prediction_text_layer = text_layer_create(s_first_prediction_text_bounds);
   text_layer_set_text_alignment(s_first_prediction_text_layer, GTextAlignmentCenter);
-  text_layer_set_font(s_first_prediction_text_layer, fonts_get_system_font(FONT_KEY_GOTHIC_28_BOLD));
+  text_layer_set_font(s_first_prediction_text_layer, fonts_get_system_font(s_bounds.size.h>=200?FONT_KEY_BITHAM_30_BLACK:FONT_KEY_GOTHIC_24_BOLD));
 
   s_other_predictions_text_bounds = GRect(
     s_bounds.size.w / 2, s_bounds.size.h * 0.40,
@@ -65,7 +65,7 @@ void predictions_layer_init(Window *window) {
   );
   s_other_predictions_text_layer = text_layer_create(s_other_predictions_text_bounds);
   text_layer_set_text_alignment(s_other_predictions_text_layer, GTextAlignmentCenter);
-  text_layer_set_font(s_other_predictions_text_layer, fonts_get_system_font(FONT_KEY_GOTHIC_14_BOLD));
+  text_layer_set_font(s_other_predictions_text_layer, fonts_get_system_font(s_bounds.size.h>=200?FONT_KEY_GOTHIC_18_BOLD:FONT_KEY_GOTHIC_14_BOLD));
 
   s_predictions_layer_bounds = GRect(
     s_bounds.origin.x, s_bounds.size.h * 0.40,

@@ -1,7 +1,15 @@
 function getRoutes(lat, lon, callback, errorCallback) {
-  var url = 'http://www.transsee.ca:8080/menu' +
+  var settings = JSON.parse(localStorage.getItem('clay-settings')) || {};
+  
+  if  ((!(typeof settings === 'object')) || (!Object.hasOwn(settings, "Premium")) || settings.Premium=="") {
+    console.log("error");
+    Watch.displayTextErrorPremium();
+    return;
+  }
+  var url = 'https://www.transsee.ca/menu' +
               '?lat=' + lat +
-              '&lon=' + lon;
+              '&lon=' + lon +'&premium='+BigInt(settings.Premium).toString();/*Make sure it is really a just number*/
+  console.log(url);
   xhrRequest(url, 'GET', function(json_routes) {
     routes = JSON.parse(json_routes);
     callback(routes);

@@ -5,7 +5,8 @@ enum {
   SPLASH_TEXT_ERROR_LOCATION    = 1,
   SPLASH_TEXT_FINDING_STOPS     = 2,
   SPLASH_TEXT_ERROR_STOPS       = 3,
-  SPLASH_TEXT_ERROR_PREDICTIONS = 4
+  SPLASH_TEXT_ERROR_PREDICTIONS = 4,
+  SPLASH_TEXT_ERROR_PREMIUM     = 5
 };
 
 const int KEY_SPLASH_WITH_TEXT = 400;
@@ -61,6 +62,9 @@ void splash_layer_inbox_received(DictionaryIterator *iterator, void *context) {
       break;
     case SPLASH_TEXT_ERROR_PREDICTIONS:
       splash_show("CAN'T DOWNLOAD PREDICTIONS \U0001F614");
+      break;
+    case SPLASH_TEXT_ERROR_PREMIUM:
+      splash_show("PREMIUM ID NOT SET \U0001F614");
       break;
   }
 }

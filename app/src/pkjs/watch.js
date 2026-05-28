@@ -1,6 +1,6 @@
 var MAX_TIMES_FOR_DIRECTION = 3;
 var ABOUT_SECTION_TITLE = 'TransSee Transit Time';
-var ABOUT_ITEM_TITLE = 'by @chesterbr and TransSee';
+var ABOUT_ITEM_TITLE = 'by @chesterbr, TransSee';
 var ABOUT_ITEM_SUBTITLE = 'https://www.transsee.ca/';
 
 var stopsAndRoutes;
@@ -35,6 +35,7 @@ module.exports.displayTextErrorLocation    = function() { displayText(1) };
 module.exports.displayTextFindingStops     = function() { displayText(2) };
 module.exports.displayTextErrorStops       = function() { displayText(3) };
 module.exports.displayTextErrorPredictions = function() { displayText(4) };
+module.exports.displayTextErrorPremium     = function() { displayText(5) };
 
 // Incoming messages
 
