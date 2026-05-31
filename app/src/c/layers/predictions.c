@@ -25,6 +25,7 @@ static int s_items_count;
 static int s_current_item;
 static char *s_first_prediction_text;
 static char *s_other_predictions_text;
+static time_t currtime;
 
 static void update_current_display_item(void);
 static void update_up_and_down_content_indicators(void);
@@ -207,6 +208,7 @@ static void update_current_display_item(void) {
   if (item.is_prediction) {
     text_layer_set_text(s_secondary_text_layer, s_stop_address);
     if (item.times_count > 0) {
+      time(&currtime);
       format_time(s_first_prediction_text, item, 0);
       int pos = format_time(s_other_predictions_text, item, 1);
       format_time(s_other_predictions_text + pos, item, 2);
@@ -230,7 +232,7 @@ static int format_time(char* var, DisplayableItem item, int index) {
     return 0;
   }
   char* format;
-  int value = item.times[index];
+  int value = item.times[index]-currtime;
   if (value >= 60) {
     format = "%dmin\n";
     value = value / 60;

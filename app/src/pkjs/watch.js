@@ -109,7 +109,7 @@ function buildPredictionMessages() {
       appendToMessage('prediction_route_text', predictions.routeTitle+'\n'+direction.title);
       var times = values(direction, 'prediction');
       times.slice(0, MAX_TIMES_FOR_DIRECTION).forEach(function(time) {
-        appendToMessage('prediction_seconds', parseInt(time.seconds));
+        appendToMessage('prediction_seconds', Number(BigInt(time.epochTime)/BigInt(1000)));
       });
       enqueueMessage();
     });
