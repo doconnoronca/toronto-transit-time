@@ -55,18 +55,26 @@
         "resources": {
             "media": [
                 {
+                    "file": "images/img/streetcar2.png",
+                    "name": "IMAGE_STREETCAR",
+                    "targetPlatforms": [
+                        "aplite",
+                        "basalt",
+                        "chalk",
+                        "diorite",
+                        "emery",
+                        "gabbro",
+                        "flint"
+                    ],
+                    "type": "bitmap"
+                },
+                {
                     "file": "images/img/streetcar2525.png",
                     "memoryFormat": "1Bit",
                     "menuIcon": true,
                     "name": "IMAGE_MENU_ICON",
                     "targetPlatforms": null,
                     "type": "bitmap"
-                },
-                {
-                    "file": "images/img/streetcar.png",
-                    "name": "IMAGE_STREETCAR",
-                    "targetPlatforms": null,
-                    "type": "png"
                 }
             ]
         },
@@ -85,5 +93,5 @@
             "watchface": false
         }
     },
-    "version": "2.0.0"
+    "version": "2.0.1"
 }

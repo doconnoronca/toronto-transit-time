@@ -5,8 +5,8 @@
 #include "../modules/util.h"
 #include <pebble.h>
 
-const int PREDICTIONS_REFRESH_SECONDS = 15;
-const int PREDICTIONS_SCREEN_TIMEOUT_SECONDS = 120;
+const int PREDICTIONS_REFRESH_SECONDS = 30;
+const int PREDICTIONS_SCREEN_TIMEOUT_SECONDS = 600;
 
 enum {
   // Inbound message keys

@@ -57,7 +57,7 @@ void predictions_layer_init(Window *window) {
   );
   s_first_prediction_text_layer = text_layer_create(s_first_prediction_text_bounds);
   text_layer_set_text_alignment(s_first_prediction_text_layer, GTextAlignmentCenter);
-  text_layer_set_font(s_first_prediction_text_layer, fonts_get_system_font(s_bounds.size.h>=200?FONT_KEY_BITHAM_30_BLACK:FONT_KEY_GOTHIC_24_BOLD));
+  text_layer_set_font(s_first_prediction_text_layer, fonts_get_system_font(s_bounds.size.h>=200?FONT_KEY_GOTHIC_28_BOLD:FONT_KEY_GOTHIC_24_BOLD));
 
   s_other_predictions_text_bounds = GRect(
     s_bounds.size.w / 2, s_bounds.size.h * 0.40,
