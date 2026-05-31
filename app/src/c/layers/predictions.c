@@ -231,15 +231,15 @@ static int format_time(char* var, DisplayableItem item, int index) {
     *var = '\0';
     return 0;
   }
-  char* format;
-  int value = item.times[index]-currtime;
+  time_t value = item.times[index]-currtime;
+  APP_LOG(APP_LOG_LEVEL_DEBUG, "%ld %ld %ld", item.times[index],currtime,value);
   if (value >= 60) {
-    format = "%dmin\n";
-    value = value / 60;
+    if (item.hightimes[index]>=item.times[index]+60 && value<3600)
+      return snprintf(var, PREDICTION_TEXT_SIZE, "%ld-%ldmin\n", value/60, (item.hightimes[index]-currtime)/60);
+    else return snprintf(var, PREDICTION_TEXT_SIZE, "%ldmin\n", value/60);
   } else if (value > 0) {
-    format = "%ds\n";
+    return snprintf(var, PREDICTION_TEXT_SIZE, "%lds\n", value);
   } else {
-    format = "DUE\n";
+    return snprintf(var, PREDICTION_TEXT_SIZE,"DUE\n");
   }
-  return snprintf(var, PREDICTION_TEXT_SIZE, format, value);
 }

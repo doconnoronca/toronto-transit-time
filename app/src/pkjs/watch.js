@@ -109,6 +109,9 @@ function buildPredictionMessages() {
       appendToMessage('prediction_route_text', predictions.routeTitle+'\n'+direction.title);
       var times = values(direction, 'prediction');
       times.slice(0, MAX_TIMES_FOR_DIRECTION).forEach(function(time) {
+        if (Object.hasOwn(time, "highEpochTime"))
+          appendToMessage('prediction_high_seconds', Number(BigInt(time.highEpochTime)/BigInt(1000)));
+        else appendToMessage('prediction_high_seconds',0);
         appendToMessage('prediction_seconds', Number(BigInt(time.epochTime)/BigInt(1000)));
       });
       enqueueMessage();
@@ -152,7 +155,7 @@ var keySuffix = 1;
 
 function appendToMessage(type, value) {
   var key = 'KEY_' + type.toUpperCase();
-  if (type == 'menu_item_title') {
+  if (type == 'menu_item_title' || type == 'prediction_high_seconds') {
     key += '_' + keySuffix;
   } else if (type == 'menu_item_subtitle' || type == 'prediction_seconds') {
     key += '_' + keySuffix++;

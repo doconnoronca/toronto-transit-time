@@ -17,6 +17,9 @@ enum {
   KEY_PREDICTION_SECONDS_2    = 204,
   KEY_PREDICTION_SECONDS_3    = 205,
   KEY_PREDICTION_SHOW         = 206,
+  KEY_PREDICTION_HIGH_SECONDS_1    = 213,
+  KEY_PREDICTION_HIGH_SECONDS_2    = 214,
+  KEY_PREDICTION_HIGH_SECONDS_3    = 215,
 };
 
 static Window *s_predictions_window;
@@ -55,6 +58,7 @@ void predictions_window_inbox_received(DictionaryIterator *iterator, void *conte
       case KEY_PREDICTION_SECONDS_2:
       case KEY_PREDICTION_SECONDS_3:
         s_displayable_items[s_displayable_items_count].times[tuple->key - KEY_PREDICTION_SECONDS_1] = tuple->value->int32;
+        s_displayable_items[s_displayable_items_count].hightimes[tuple->key - KEY_PREDICTION_SECONDS_1] = dict_find(iterator, key+10)->value->int32;
         s_displayable_items[s_displayable_items_count].times_count++;
         break;
       case KEY_PREDICTION_SHOW:

@@ -40,6 +40,9 @@
             "KEY_MENU_SECTION_TITLE": 103,
             "KEY_MENU_SHOW": 124,
             "KEY_MENU_STRING_BUFFER_SIZE": 101,
+            "KEY_PREDICTION_HIGH_SECONDS_1": 213,
+            "KEY_PREDICTION_HIGH_SECONDS_2": 214,
+            "KEY_PREDICTION_HIGH_SECONDS_3": 215,
             "KEY_PREDICTION_ROUTE_TEXT": 200,
             "KEY_PREDICTION_SECONDS_1": 203,
             "KEY_PREDICTION_SECONDS_2": 204,
@@ -93,5 +96,5 @@
             "watchface": false
         }
     },
-    "version": "2.0.1"
+    "version": "2.0.2"
 }
