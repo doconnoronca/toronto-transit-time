@@ -119,7 +119,7 @@ function buildPredictionMessages() {
   }
 
   ttcAlerts.forEach(function(alert) {
-    appendToMessage('prediction_ttc_alert', alert.text);
+    appendToMessage('prediction_ttc_alert', alert.text.substring(0,70));
     enqueueMessage();
   });
 
