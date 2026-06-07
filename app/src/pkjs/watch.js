@@ -100,13 +100,13 @@ function buildPredictionMessages() {
   var directions = values(predictions, 'direction');
   var ttcAlerts = values(predictions, 'message');
 
-  appendToMessage('prediction_stop_address', predictions.stopTitle);
+  appendToMessage('prediction_stop_address', predictions.stopTitle.substring(0,70));
   if (directions.length == 0) {
-    appendToMessage('prediction_route_text', predictions.routeTitle+'\n'+predictions.dirTitleBecauseNoPredictions);
+    appendToMessage('prediction_route_text', (predictions.routeTitle+'\n'+predictions.dirTitleBecauseNoPredictions).substring(0,70));
     enqueueMessage();
   } else {
     directions.forEach(function(direction) {
-      appendToMessage('prediction_route_text', predictions.routeTitle+'\n'+direction.title);
+      appendToMessage('prediction_route_text', (predictions.routeTitle+'\n'+direction.title).substring(0,70));
       var times = values(direction, 'prediction');
       times.slice(0, MAX_TIMES_FOR_DIRECTION).forEach(function(time) {
         if (Object.hasOwn(time, "highEpochTime"))

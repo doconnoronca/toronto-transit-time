@@ -117,7 +117,7 @@ void predictions_layer_init(Window *window) {
 
   // Non-UI init
   s_first_prediction_text = malloc(sizeof(char) * PREDICTION_TEXT_SIZE);
-  s_other_predictions_text = malloc(sizeof(char) * PREDICTION_TEXT_SIZE);
+  s_other_predictions_text = malloc(sizeof(char) * PREDICTION_TEXT_SIZE*2);
 }
 
 void predictions_layer_destroy(void) {
@@ -232,7 +232,7 @@ static int format_time(char* var, DisplayableItem item, int index) {
     return 0;
   }
   time_t value = item.times[index]-currtime;
-  APP_LOG(APP_LOG_LEVEL_DEBUG, "%ld %ld %ld", item.times[index],currtime,value);
+  //APP_LOG(APP_LOG_LEVEL_DEBUG, "%ld %ld %ld", item.times[index],currtime,value);
   if (value >= 60) {
     if (item.hightimes[index]>=item.times[index]+60 && value<3600)
       return snprintf(var, PREDICTION_TEXT_SIZE, "%ld-%ldmin\n", value/60, (item.hightimes[index]-currtime)/60);

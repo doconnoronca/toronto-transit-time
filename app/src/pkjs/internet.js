@@ -78,7 +78,7 @@ function ttcXmlToObject(xml) {
 
     // These tags may appear more than once
     if (tagName =='direction' || tagName == 'message' || tagName == 'prediction') {
-      tagName = tagName + "_" + (uniqueSuffix++);
+      tagName = tagName + "_" + (uniqueSuffix<10?"0":"") + (uniqueSuffix++);
     }
 
     // Opening tag

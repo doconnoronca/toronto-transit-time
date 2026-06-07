@@ -5,7 +5,7 @@
 #include "../modules/util.h"
 #include <pebble.h>
 
-const int PREDICTIONS_REFRESH_SECONDS = 30;
+const int PREDICTIONS_REFRESH_SECONDS = 15;
 const int PREDICTIONS_SCREEN_TIMEOUT_SECONDS = 600;
 
 enum {
@@ -43,11 +43,13 @@ void predictions_window_inbox_received(DictionaryIterator *iterator, void *conte
     if (tuple == NULL) {
       continue;
     }
+//     APP_LOG(APP_LOG_LEVEL_DEBUG, "key %d item %d",tuple->key,s_displayable_items_count);
     switch (tuple->key) {
       case KEY_PREDICTION_ROUTE_TEXT:
       case KEY_PREDICTION_TTC_ALERT:
         s_displayable_items_count++;
         s_displayable_items[s_displayable_items_count].text = strdup(tuple->value->cstring);
+//     APP_LOG(APP_LOG_LEVEL_DEBUG, "%s",s_displayable_items[s_displayable_items_count].text); 
         s_displayable_items[s_displayable_items_count].times_count = 0;
         s_displayable_items[s_displayable_items_count].is_prediction = tuple->key == KEY_PREDICTION_ROUTE_TEXT;
         break;
@@ -89,7 +91,7 @@ void predictions_window_make_visible(int mode) {
     s_seconds_until_exit = PREDICTIONS_SCREEN_TIMEOUT_SECONDS;
     splash_show("LOADING PREDICTIONS...");
   } else if (mode == PRED_MODE_PREDICTIONS) {
-    predictions_layer_update(s_stop_address, s_displayable_items, s_displayable_items_count, s_reset_scroll);
+   predictions_layer_update(s_stop_address, s_displayable_items, s_displayable_items_count, s_reset_scroll);
     splash_hide();
   }
 }
@@ -108,7 +110,7 @@ static void update_prediction_times(tm *tick_time, TimeUnits units_changed) {
   if (--s_seconds_until_exit == 0) {
     window_stack_pop(true);
   } else if (--s_seconds_until_refresh > 0) {
-/*    for(int i = 0; i < s_displayable_items_count; i++) {
+ /*   for(int i = 0; i < s_displayable_items_count; i++) {
       for(int j = 0; j < s_displayable_items[i].times_count; j++) {
         s_displayable_items[i].times[j] -= 1;
       }

@@ -42,7 +42,7 @@ function onRoutesSuccess(routes) {
 // Predictions window flow
 
 function openPredictions(route) {
-  Internet.getPredictions(route.uri.replace("http://www.transsee.ca:8080/","https://www.transsee.ca/"), onPredictionsSuccess, onPredictionsError);
+  Internet.getPredictions(route.uri/*.replace("http://www.transsee.ca:8080/","https://www.transsee.ca/")*/, onPredictionsSuccess, onPredictionsError);
 }
 
 function onPredictionsSuccess(predictions) {
