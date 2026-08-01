@@ -39,7 +39,7 @@ function xhrRequest(url, type, callback, errorCallback) {
       }
     }
   }
-  xhr.timeout = 5000;
+  xhr.timeout = 15000;
   xhr.open(type, url);
   xhr.send();
 };
