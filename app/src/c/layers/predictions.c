@@ -232,14 +232,20 @@ static int format_time(char* var, DisplayableItem item, int index) {
     return 0;
   }
   time_t value = item.times[index]-currtime;
+  time_t highvalue = item.hightimes[index]-currtime;
   //APP_LOG(APP_LOG_LEVEL_DEBUG, "%ld %ld %ld", item.times[index],currtime,value);
   if (value >= 60) {
-    if (item.hightimes[index]>=item.times[index]+60 && value<3600)
-      return snprintf(var, PREDICTION_TEXT_SIZE, "%ld-%ldmin\n", value/60, (item.hightimes[index]-currtime)/60);
+    if (highvalue>=value+60 && value<3600)
+      return snprintf(var, PREDICTION_TEXT_SIZE, "%ld-%ldmin\n", value/60, highvalue/60);
     else return snprintf(var, PREDICTION_TEXT_SIZE, "%ldmin\n", value/60);
   } else if (value > 0) {
-    return snprintf(var, PREDICTION_TEXT_SIZE, "%lds\n", value);
+    if (highvalue<=value+10) return snprintf(var, PREDICTION_TEXT_SIZE, "%lds\n", value);
+    else if (highvalue>60) return snprintf(var, PREDICTION_TEXT_SIZE, "%lds-%ldm\n", value,highvalue/60);
+    else return snprintf(var, PREDICTION_TEXT_SIZE, "%lds-%lds\n", value,highvalue);
   } else {
-    return snprintf(var, PREDICTION_TEXT_SIZE,"DUE\n");
+    if (highvalue>10) {
+       if (highvalue>60) return snprintf(var, PREDICTION_TEXT_SIZE, "DUE-%ldm\n", highvalue/60);
+       else return snprintf(var, PREDICTION_TEXT_SIZE, "DUE-%lds\n",highvalue);
+    } else return snprintf(var, PREDICTION_TEXT_SIZE,"DUE\n");
   }
 }
